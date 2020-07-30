@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from explorecultureapp.models import Article, CulturalPhotography, View360, EightDAudio
-from .serializers import ArticleSerializer, CulturalPhotographySerializer, View360Serializer, EightDAudioSerializer
+from explorecultureapp.models import Article, CulturalPhotography, View360, EightDAudio, AR, TraditionalFood
+from .serializers import ArticleSerializer, CulturalPhotographySerializer, View360Serializer, EightDAudioSerializer, ARSerializer, TraditionalFoodSerializer
 
 # class ArticleListView(ListAPIView):
 #     queryset = Article.objects.all()
@@ -29,3 +29,11 @@ class View360ViewSet(viewsets.ModelViewSet):
 class EightDAudioViewSet(viewsets.ModelViewSet):
     queryset = EightDAudio.objects.all()
     serializer_class = EightDAudioSerializer
+
+class ARViewSet(viewsets.ModelViewSet):
+    queryset = AR.objects.all()
+    serializer_class = ARSerializer
+
+class TraditionalFoodViewSet(viewsets.ModelViewSet):
+    queryset = TraditionalFood.objects.all()
+    serializer_class = TraditionalFoodSerializer

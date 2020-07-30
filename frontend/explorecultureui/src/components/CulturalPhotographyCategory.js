@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { CardDeck, Card, Button, Row } from 'react-bootstrap';
+import { CardDeck, Card, Button, Row, Modal } from 'react-bootstrap';
 
 function CulturalPhotographyCategory(props) {
 
+    const [lgShow, setLgShow] = useState(false);
+    const [cardid, setCardid] = useState({});
 
     useEffect(() => {
         console.log(props.culturalphotography1)
     }, [props.culturalphotography1])
+
+    useEffect(() => {
+        console.log(cardid);
+    }, [cardid])
+
 
     return (
         <React.Fragment>
@@ -27,12 +34,33 @@ function CulturalPhotographyCategory(props) {
                             <Card.Text>
                             {item.content}
                             </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
+                            <Button variant="primary" onClick={() => { setLgShow(true); setCardid(item) }}>More details</Button>
                         </Card.Body>
                     </Card>
                     })}
 
                 </CardDeck>
+
+
+                    <Modal
+                        key={cardid.id}
+                        size="lg"
+                        show={lgShow}
+                        onHide={() => setLgShow(false)}
+                        aria-labelledby="example-modal-sizes-title-lg"
+                    >
+                    <Modal.Header closeButton>
+                      <Modal.Title id="example-modal-sizes-title-lg">
+                        Cultural Photography
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <img src={cardid.culturalphotographyimg} id='culturalphotographymodalimg' className='img-fluid' />
+                        <h2 id='culturalphotographymodaltitle'>{cardid.title}</h2>
+                        <p id='culturalphotographymodaldescription'>{cardid.content}</p>
+                        <p id='culturalphotographyimgcredits'>{cardid.imgposter}</p>
+                    </Modal.Body>
+                  </Modal>
 
                 </div>
 

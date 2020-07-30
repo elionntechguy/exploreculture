@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { CardDeck, Card, Button, Row } from 'react-bootstrap';
+import { CardDeck, Card, Button, Row, Modal, ResponsiveEmbed } from 'react-bootstrap';
 
 
 
 function View360Category(props) {
+
+    const [lgShow, setLgShow] = useState(false);
+    const [cardid, setCardid] = useState({});
+
     return (
         <React.Fragment>
 
@@ -23,12 +27,35 @@ function View360Category(props) {
                             <Card.Text>
                             {item.content}
                             </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
+                            <Button variant="primary" onClick={() => { setLgShow(true); setCardid(item) }}>More details</Button>
                         </Card.Body>
                     </Card>
                     })}
 
                 </CardDeck>
+
+                <Modal
+                    key={cardid.id}
+                    size="lg"
+                    show={lgShow}
+                    onHide={() => setLgShow(false)}
+                    aria-labelledby="example-modal-sizes-title-lg"
+                >
+                <Modal.Header closeButton>
+                    <Modal.Title id="example-modal-sizes-title-lg">
+                        View 360
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <img src={cardid.view360img} style={{ width: '100%' }} id='view360img' className='img-fluid' />
+                    <h2 id='view360modaltitle'>{cardid.title}</h2>
+                    <p id='view360modaldescription'>{cardid.content}</p>
+                    <ResponsiveEmbed aspectRatio="16by9">
+                        <embed src={cardid.view360url} />
+                    </ResponsiveEmbed>
+                    <p id='view360imgcredits'>Credits: {cardid.imgposter}</p>
+                </Modal.Body>
+                </Modal>
 
                 </div>
 

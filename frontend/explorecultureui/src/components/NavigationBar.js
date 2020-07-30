@@ -53,6 +53,13 @@ function NavigationBar() {
                                 </Link>
                             </Nav.Link>
                         </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link>
+                                <Link to="/about">
+                                    about
+                                </Link>
+                            </Nav.Link>
+                        </Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
