@@ -18,7 +18,7 @@
     "react-three-renderer": "^3.2.4",
     "react-three-renderer-objects": "0.0.6",
     "styled-components": "^5.1.1",
-    "three": "^0.119.0"
+    "three": "^0.137.0"
   },
   "scripts": {
     "start": "react-scripts start",
